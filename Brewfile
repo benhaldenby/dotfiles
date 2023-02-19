@@ -74,9 +74,10 @@ cask 'quicklook-json'
 #cask 'font-source-serif-pro'
 
 # Mac App Store
-mas 'Magnet', id: 441258766
+mas 'Bitwarden', id: 1352778147
 mas 'ColorSlurp', id: 1287239339
 mas 'DaisyDisk', id: 411643860
+mas 'Magnet', id: 441258766
+mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Pixelmator Pro', id: 1289583905
-mas 'Numbers', id: 409203825
