@@ -38,14 +38,14 @@ brew 'yarn'
 
 # Apps
 cask '1password'
-# cask 'app-cleaner'
+cask 'appcleaner'
 cask 'discord'
+cask 'fig'
 cask 'firefox'
 cask 'google-chrome'
 cask 'imageoptim'
-# cask 'imagesize'
 cask 'loopback'
-cask 'plex-media-server'
+# cask 'plex-media-server'
 cask 'slack'
 cask 'spotify'
 cask 'launchbar'
@@ -58,7 +58,7 @@ cask 'little-snitch'
 cask 'zoom'
 
 # Quicklook
-cask 'qlmarkdown'
+# cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'qlstephen'
 cask 'qlvideo'
@@ -68,10 +68,11 @@ cask 'webpquicklook'
 # cask 'font-lato'
 
 # Mac App Store
-mas 'Bitwarden', id: 1352778147
+# mas 'Bitwarden', id: 1352778147
 mas 'ColorSlurp', id: 1287239339
 mas 'DaisyDisk', id: 411643860
 mas 'Magnet', id: 441258766
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Pixelmator Pro', id: 1289583905
+mas 'Transmit', id: 1436522307
