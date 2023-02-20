@@ -48,9 +48,9 @@ mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_passwor
 
 # Create a Local directory
 mkdir $HOME/Local
+mkdir $HOME/Local/Projects
 
 # Create a Projects directory for repos etc
-mkdir $HOME/Local/Projects
 mkdir $HOME/Local/Projects/Ben
 mkdir $HOME/Local/Projects/Matrix
 
