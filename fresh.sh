@@ -3,9 +3,9 @@
 echo "Setting up your Mac..."
 
 # Check for Oh My Zsh and install if we don't have it
-if test ! $(which omz); then
-  /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
-fi
+# if test ! $(which omz); then
+#   /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+# fi
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
@@ -15,9 +15,11 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf $HOME/.zshrc
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+# rm -rf $HOME/.zshrc
+# ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Update Homebrew recipes
 brew update
@@ -30,23 +32,31 @@ brew bundle --file Brewfile
 mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"
 
 # Install PHP extensions with PECL
-pecl install imagick redis swoole
+# pecl install imagick redis swoole
 
 # Install global Composer packages
-/usr/local/bin/composer global require laravel/installer laravel/valet beyondcode/expose spatie/global-ray spatie/visit
+# /usr/local/bin/composer global require laravel/installer laravel/valet beyondcode/expose spatie/global-ray spatie/visit
 
 # Install Laravel Valet
-$HOME/.composer/vendor/bin/valet install
+# $HOME/.composer/vendor/bin/valet install
 
 # Install Global Ray
-$HOME/.composer/vendor/bin/global-ray install
+# $HOME/.composer/vendor/bin/global-ray install
 
 # Create a Sites directory
-mkdir $HOME/Sites
+# mkdir $HOME/Sites
+
+# Create a Local directory
+mkdir $HOME/Local
+
+# Create a Projects directory for repos etc
+mkdir $HOME/Local/Projects
+mkdir $HOME/Local/Projects/Ben
+mkdir $HOME/Local/Projects/Matrix
 
 # Create sites subdirectories
-mkdir $HOME/Sites/blade-ui-kit
-mkdir $HOME/Sites/laravel
+# mkdir $HOME/Sites/blade-ui-kit
+# mkdir $HOME/Sites/laravel
 
 # Clone Github repositories
 clone.sh
