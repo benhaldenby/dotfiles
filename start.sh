@@ -1,6 +1,9 @@
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# 1Password
+brew install --cask 1password
+
 # Set up git defaults
 git config --global user.name "Ben Haldenby"
 git config --global user.email "benhaldenby@gmail.com"
@@ -58,7 +61,7 @@ EOF
 
 
 # Clone dotfiles repo
-# git clone git@github.com:benhaldenby/dotfiles.git
+git clone git@github.com:benhaldenby/dotfiles.git
 
 # Run fresh install script
 # sh fresh.sh
@@ -70,14 +73,46 @@ brew install docker
 colima start --cpu 4 --memory 6 --disk 100 --vm-type=qemu --mount-type=sshfs --dns=1.1.1.1
 
 brew install drud/ddev/ddev
-
 mkcert -install
 
+# Install Node
+brew install node
 
-# NEWSQUEST
+# Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-# Install CompanyPortal app
-# Install Teams
 
-# LittleSnitch license key
+# Newsquest
+brew install --cask intune-company-portal
+brew install --cask microsoft-teams
+brew install --cask microsoft-outlook
+brew install --cask microsoft-word
+brew install --cask microsoft-excel
+
+# LittleSnitch
+brew install --cask little-snitch
+# Ben Haldenby
 # 35UG7BTXY2-715NS-Z6W2EYARJ8
+
+# Launchbar
+brew install --cask launchbar
+# 16UG7BTXY1-717L1-M1EMDMTDZJ
+
+# Tower
+/Volumes/iCloud/NewOS/Tower_Pro_6.0.dmg
+
+# AppCleaner
+brew install --cask appcleaner
+
+
+# Audio Hijack
+brew install --cask audiohijack
+# STCK-Y4GC-QEFA-EV9C-9NKY-WUP4-GPXR-YPE4-H4MR
+
+# Farrago
+brew install --cask farrago
+# FEBE-QKAW-EMVU-4668-QXKD-G2VY-MBCY-RMJC-24XF
+
+# SoundSource
+brew install --cask soundsource
+# ZLAT-RKN3-ZA2M-BFWD-8FZJ-DE23-W9XJ-2U8N-DHDA
