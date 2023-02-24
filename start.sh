@@ -10,7 +10,6 @@ ssh-keygen -f ~/.ssh/id_rsa -N ""
 ssh-keygen -f ~/.ssh/id_rsa_ben -N ""
 
 # Echo the copy commands one by one
-
 echo "pbcopy < ~/.ssh/id_rsa"
 echo "pbcopy < ~/.ssh/id_rsa_ben"
 
@@ -58,26 +57,41 @@ EOF
 
 
 # Clone dotfiles repo
-# git clone git@github.com:benhaldenby/dotfiles.git
+git clone git@github.com:benhaldenby/dotfiles.git
+
+# Alias
+alias ls="ls -al"
+export PATH alias ls="ls -al"
+
 
 # Run fresh install script
 # sh fresh.sh
 
-# Install docker, colima, ddev
-brew install colima
-brew install docker
-
-colima start --cpu 4 --memory 6 --disk 100 --vm-type=qemu --mount-type=sshfs --dns=1.1.1.1
-
-brew install drud/ddev/ddev
-
-mkcert -install
 
 
 # NEWSQUEST
+
+# Install docker, colima, ddev
+# brew install colima
+# brew install docker
+
+# colima start --cpu 4 --memory 6 --disk 100 --vm-type=qemu --mount-type=sshfs --dns=1.1.1.1
+
+# brew install drud/ddev/ddev
+
+# mkcert -install
 
 # Install CompanyPortal app
 # Install Teams
 
 # LittleSnitch license key
 # 35UG7BTXY2-715NS-Z6W2EYARJ8
+
+# .macos dotfiles
+
+# Dock
+
+# Symlink Downloads to iCloud
+sudo mv Downloads Downloads.backup
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads Downloads
+
