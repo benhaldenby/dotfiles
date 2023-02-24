@@ -61,29 +61,15 @@ EOF
 
 # Clone dotfiles repo
 git clone git@github.com:benhaldenby/dotfiles.git
-<<<<<<< HEAD
 
 # Alias
 alias ls="ls -al"
 export PATH alias ls="ls -al"
 
-=======
->>>>>>> e630181fb4dfe93d5835b7e9e2a7a7cbe9bed6a5
 
 # Run fresh install script
 # sh fresh.sh
 
-<<<<<<< HEAD
-=======
-# Install docker, colima, ddev
-brew install colima
-brew install docker
-
-colima start --cpu 4 --memory 6 --disk 100 --vm-type=qemu --mount-type=sshfs --dns=1.1.1.1
-
-brew install drud/ddev/ddev
-mkcert -install
->>>>>>> e630181fb4dfe93d5835b7e9e2a7a7cbe9bed6a5
 
 # Install Node
 brew install node
@@ -91,7 +77,6 @@ brew install node
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-<<<<<<< HEAD
 # Install docker, colima, ddev
 # brew install colima
 # brew install docker
@@ -102,10 +87,14 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 # mkcert -install
 
-# Install CompanyPortal app
-# Install Teams
-=======
->>>>>>> e630181fb4dfe93d5835b7e9e2a7a7cbe9bed6a5
+# .macos dotfiles
+# Dock needs work
+
+
+# Symlink Downloads to iCloud
+sudo mv Downloads Downloads.backup
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads Downloads
+
 
 # Newsquest
 brew install --cask intune-company-portal
@@ -119,16 +108,6 @@ brew install --cask little-snitch
 # Ben Haldenby
 # 35UG7BTXY2-715NS-Z6W2EYARJ8
 
-<<<<<<< HEAD
-# .macos dotfiles
-
-# Dock
-
-# Symlink Downloads to iCloud
-sudo mv Downloads Downloads.backup
-ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads Downloads
-
-=======
 # Launchbar
 brew install --cask launchbar
 # 16UG7BTXY1-717L1-M1EMDMTDZJ
@@ -151,4 +130,3 @@ brew install --cask farrago
 # SoundSource
 brew install --cask soundsource
 # ZLAT-RKN3-ZA2M-BFWD-8FZJ-DE23-W9XJ-2U8N-DHDA
->>>>>>> e630181fb4dfe93d5835b7e9e2a7a7cbe9bed6a5
