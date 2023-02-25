@@ -108,7 +108,7 @@ brew install --cask little-snitch
 # Ben Haldenby
 # 35UG7BTXY2-715NS-Z6W2EYARJ8
 
-# Launchbar
+# LaunchBar
 brew install --cask launchbar
 # 16UG7BTXY1-717L1-M1EMDMTDZJ
 
@@ -118,6 +118,8 @@ brew install --cask launchbar
 # AppCleaner
 brew install --cask appcleaner
 
+# NordVPN
+brew install --cask nordvpn
 
 # Audio Hijack
 brew install --cask audiohijack
