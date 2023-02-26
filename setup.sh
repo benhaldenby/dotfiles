@@ -23,13 +23,10 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 sh setup/aliases.sh
 
 # Local directory setup
-sh setup/local.sh
+sh setup/folders.sh
 
 # SSH setup
 sh setup/ssh.sh
-
-# Setup Projects directories
-sh setup/projects.sh
 
 # Clone repositories
 sh setup/repos.sh
