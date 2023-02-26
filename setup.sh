@@ -1,6 +1,6 @@
 echo "Setting up your Mac..."
 
-# const
+# User values
 COMPUTERNAME="MacBook Pro"
 
 # Setup path
@@ -26,7 +26,7 @@ sh setup/aliases.sh
 sh setup/folders.sh
 
 # SSH setup
-sh setup/ssh.sh
+# sh setup/ssh.sh
 
 # Clone repositories
 sh setup/repos.sh
@@ -47,14 +47,8 @@ open ~/Library/Mobile\ Documents/com~apple~CloudDocs/NewOS/Apps/
 # Set default MySQL root password and auth type
 # mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"
 
-
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-
-# Alias
-alias ls="ls -al"
-# export PATH alias ls="ls -al"
-
 
 # Install docker, colima, ddev (error prone 260223)
 # brew install colima

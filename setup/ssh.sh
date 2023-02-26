@@ -12,30 +12,37 @@ ssh-keygen -f ~/.ssh/id_rsa_ben -N ""
 ssh-add --apple-use-keychain ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa
 # Prompt user to add the key to GitHub
-echo "📋 id_rsa key copied to clipboard!"
-echo "Go paste into GitHub..."
+echo "📋 id_rsa key copied to clipboard! Go paste into GitHub"
+echo "Press any key to continue"
 read
 
 # Add 'ben' key to ssh-agent
 ssh-add --apple-use-keychain ~/.ssh/id_rsa_ben
 pbcopy < ~/.ssh/id_rsa_ben
 # Prompt user to add the key to GitHub
-echo "📋 id_rsa_ben copied to clipboard!"
-echo "Go paste into GitHub..."
+echo "📋 id_rsa_ben copied to clipboard! Go paste into GitHub"
+echo "Press any key to continue"
 read
 
 # Add to known hosts
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ssh-keyscan -H bitbucket.org >> ~/.ssh/known_hosts
 
+# Create fresh SSH config
+rm -rf ~/.ssh/
+mkdir ~/.ssh/
+touch ~/.ssh/config
+
 # Insert SSH config for multiple keys
 cat << EOF >> ~/.ssh/config
+Include /Users/ben/.colima/ssh_config
+
 # All keys
 Host *
  AddKeysToAgent yes
  UseKeychain yes
 
-# Matrix SSH keys
+# Default SSH keys
 Host github.com
   HostName github.com
   User git
@@ -47,7 +54,6 @@ Host bitbucket.com
   User git
   IdentityFile ~/.ssh/id_rsa
   IdentitiesOnly yes
-
 
 # Personal SSH keys
 Host github.com.ben
@@ -61,4 +67,8 @@ Host bitbucket.org.ben
   User git
   IdentityFile ~/.ssh/id_rsa_ben
   IdentitiesOnly yes
+
+# Fig ssh integration. Keep at the bottom of this file.
+Match all
+  Include ~/.fig/ssh
 EOF
