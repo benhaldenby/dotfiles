@@ -1,13 +1,7 @@
 # apps.sh
 
+# Google
 brew install --cask google-chrome
-
-# Newsquest
-brew install --cask intune-company-portal
-brew install --cask microsoft-teams
-brew install --cask microsoft-outlook
-brew install --cask microsoft-word
-brew install --cask microsoft-excel
 
 # LittleSnitch
 brew install --cask little-snitch
@@ -17,9 +11,6 @@ brew install --cask little-snitch
 # LaunchBar
 brew install --cask launchbar
 # 16UG7BTXY1-717L1-M1EMDMTDZJ
-
-# Tower
-sh tower.sh
 
 # AppCleaner
 brew install --cask appcleaner
@@ -38,4 +29,3 @@ brew install --cask farrago
 # SoundSource
 brew install --cask soundsource
 # ZLAT-RKN3-ZA2M-BFWD-8FZJ-DE23-W9XJ-2U8N-DHDA
-
