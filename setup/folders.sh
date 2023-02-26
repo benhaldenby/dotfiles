@@ -1,15 +1,9 @@
 # Set up local Projects directories
 
 echo "Creating local Projects directories"
-# Create a Local directory
-mkdir $HOME/Local
+mkdir -p $HOME/Local $HOME/Local/Projects/Ben $HOME/Local/Projects/Matrix
 
-# Add directories for work and personal projects
-mkdir $HOME/Local/Projects
-mkdir $HOME/Local/Projects/Ben
-mkdir $HOME/Local/Projects/Matrix
-
-echo "Symlink ~/Downloads to iCloud"
+echo "Symlinking ~/Downloads to iCloud"
 # Symlink ~/Downloads to iCloud
 sudo mv ~/Downloads ~/Downloads.backup
 ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads
