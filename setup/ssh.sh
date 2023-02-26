@@ -8,17 +8,21 @@ git config --global user.email "benhaldenby@gmail.com"
 ssh-keygen -f ~/.ssh/id_rsa -N ""
 ssh-keygen -f ~/.ssh/id_rsa_ben -N ""
 
-# Echo the copy commands one by one
-echo "Copy the SSH keys to the clipboard"
-echo "  pbcopy < ~/.ssh/id_rsa"
-echo "  pbcopy < ~/.ssh/id_rsa_ben"
-echo "and paste into GitHub"
+# Add default key to ssh-agent
+ssh-add --apple-use-keychain ~/.ssh/id_rsa
+pbcopy < ~/.ssh/id_rsa
+# Prompt user to add the key to GitHub
+echo "📋 id_rsa key copied to clipboard!"
+echo "Go paste into GitHub..."
+read
 
-# Add keys to ssh-agent
-ssh-add -K ~/.ssh/id_rsa
-ssh-add -K ~/.ssh/id_rsa_ben
-
-# Add SSH keys to github.com, bitbucket.org
+# Add 'ben' key to ssh-agent
+ssh-add --apple-use-keychain ~/.ssh/id_rsa_ben
+pbcopy < ~/.ssh/id_rsa_ben
+# Prompt user to add the key to GitHub
+echo "📋 id_rsa_ben copied to clipboard!"
+echo "Go paste into GitHub..."
+read
 
 # Add to known hosts
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
