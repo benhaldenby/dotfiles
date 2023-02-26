@@ -12,16 +12,24 @@ brew 'coreutils' # Those that come with macOS are outdated
 brew 'mackup'
 brew 'mas' # Mac App Store manager
 
+# Rogue Amoeba
+# brew install --cask audiohijack
+# STCK-Y4GC-QEFA-EV9C-9NKY-WUP4-GPXR-YPE4-H4MR
+# brew install --cask farrago
+# FEBE-QKAW-EMVU-4668-QXKD-G2VY-MBCY-RMJC-24XF
+# brew install --cask soundsource
+# ZLAT-RKN3-ZA2M-BFWD-8FZJ-DE23-W9XJ-2U8N-DHDA
+
 
 # Spatie Medialibrary
 # brew 'jpegoptim'
 # brew 'optipng'
 # brew 'pngquant'
-# brew 'svgo'
+brew 'svgo'
 # brew 'gifsicle'
 
 # Development
-brew 'php'
+# brew 'php'
 # brew 'php@8.0'
 # brew 'php@7.4'
 # brew 'colima'
@@ -30,7 +38,7 @@ brew 'php'
 # brew 'ddev'
 # brew 'imagemagick'
 # brew 'meilisearch'
-brew 'mysql'
+# brew 'mysql'
 # brew 'mysql@5.7'
 # brew 'nginx'
 brew 'node'
@@ -38,12 +46,20 @@ brew 'node'
 brew 'yarn'
 
 # Apps
-cask '1password'
-cask 'appcleaner'
-# cask 'discord'
+brew '1password'
+brew 'appcleaner'
 cask 'fig'
+# cask 'discord'
+brew 'google-chrome'
+
+brew 'launchbar'
+# 16UG7BTXY1-717L1-M1EMDMTDZJ
+brew 'little-snitch'
+# Ben Haldenby
+# 35UG7BTXY2-715NS-Z6W2EYARJ8
+
+brew 'nordvpn'
 # cask 'firefox'
-cask 'google-chrome'
 # cask 'imageoptim'
 # cask 'loopback'
 # cask 'plex-media-server'
@@ -54,8 +70,6 @@ cask 'slack'
 # cask 'the-unarchiver'
 # cask 'transmission'
 cask 'visual-studio-code'
-cask 'little-snitch'
-# cask 'zoom'
 
 # Quicklook
 # cask 'qlmarkdown'
@@ -68,12 +82,11 @@ cask 'little-snitch'
 # cask 'font-lato'
 
 # Mac App Store
-# mas 'Bitwarden', id: 1352778147
-# mas 'ColorSlurp', id: 1287239339
-# mas 'DaisyDisk', id: 411643860
+mas 'ColorSlurp', id: 1287239339
+mas 'DaisyDisk', id: 411643860
 mas 'Magnet', id: 441258766
-# mas 'Numbers', id: 409203825
-# mas 'Pages', id: 409201541
+mas 'Numbers', id: 409203825
+mas 'Pages', id: 409201541
 mas 'Pixelmator Pro', id: 1289583905
 mas "Transmit", id: 1436522307
-# mas "Xcode", id: 497799835
+mas "Xcode", id: 497799835
