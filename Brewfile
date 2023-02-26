@@ -46,19 +46,19 @@ brew 'node'
 brew 'yarn'
 
 # Apps
-brew '1password'
-brew 'appcleaner'
+cask '1password'
+cask 'appcleaner'
 cask 'fig'
 # cask 'discord'
-brew 'google-chrome'
+cask 'google-chrome'
 
-brew 'launchbar'
+cask 'launchbar'
 # 16UG7BTXY1-717L1-M1EMDMTDZJ
-brew 'little-snitch'
+cask 'little-snitch'
 # Ben Haldenby
 # 35UG7BTXY2-715NS-Z6W2EYARJ8
 
-brew 'nordvpn'
+cask 'nordvpn'
 # cask 'firefox'
 # cask 'imageoptim'
 # cask 'loopback'
