@@ -10,9 +10,9 @@ ssh-keygen -f ~/.ssh/id_rsa_ben -N ""
 
 # Echo the copy commands one by one
 echo "Copy the SSH keys to the clipboard"
-echo "pbcopy < ~/.ssh/id_rsa"
-echo "pbcopy < ~/.ssh/id_rsa_ben"
-echo "and paste the output into GitHub"
+echo "  pbcopy < ~/.ssh/id_rsa"
+echo "  pbcopy < ~/.ssh/id_rsa_ben"
+echo "and paste into GitHub"
 
 # Add keys to ssh-agent
 ssh-add -K ~/.ssh/id_rsa

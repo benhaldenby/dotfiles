@@ -4,7 +4,7 @@ echo "Setting up your Mac..."
 COMPUTERNAME="MacBook Pro"
 
 # Setup path
-# sh setup/path.zsh
+# sh setup/path.sh
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
@@ -25,8 +25,8 @@ sh setup/aliases.sh
 # Local directory setup
 sh setup/local.sh
 
-# git setup
-sh setup/git.sh
+# SSH setup
+sh setup/ssh.sh
 
 # Setup Projects directories
 sh setup/projects.sh
