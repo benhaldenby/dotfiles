@@ -47,6 +47,7 @@ brew 'yarn'
 
 # Apps
 cask '1password'
+cask '1password-cli'
 cask 'appcleaner'
 cask 'fig'
 # cask 'discord'
@@ -89,4 +90,4 @@ mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Pixelmator Pro', id: 1289583905
 mas "Transmit", id: 1436522307
-mas "Xcode", id: 497799835
+# mas "Xcode", id: 497799835

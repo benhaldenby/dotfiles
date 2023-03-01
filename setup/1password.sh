@@ -76,4 +76,8 @@ Host bitbucket.org.ben
 # Fig ssh integration. Keep at the bottom of this file.
 Match all
   Include ~/.fig/ssh
+<<<<<<< HEAD
 EOT
+=======
+EOT
+>>>>>>> 77dc8ea2da48cbd2c2fc6d6aebafdacd02601660
