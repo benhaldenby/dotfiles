@@ -14,13 +14,29 @@ mkdir ~/.ssh/
 touch ~/.ssh/config
 
 echo "Getting SSH keys from 1Password..."
+echo "Enable 1Password CLI app integration in 1Password > Preferences > Developer"
+read
 
-# If 1password cli app integration is not availabe, then add the account manually
+# Check if the 1Password CLI app is installed and enabled
+if [ -x "$(command -v op)" ]; then
+  # Test if the 1Password CLI app is integrated with the account
+  if op list items >/dev/null 2>&1; then
+    # If the script reaches this point, the 1Password CLI app is installed and integrated
+    echo "1Password CLI app is installed and integrated with the account"
+    read
+  fi
+else
+  echo "1Password CLI app is not installed. Add the accounts and signin manually..."
+  # Add the accounts and signin manually
+  eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W --shorthand ben --signin)
+  eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV --shorthand matrix --signin)
+fi
 
-#op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W
-#eval $(op signin)
-#op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV
-#eval $(op signin)
+
+# After you sign in, save your session token to an environment variable. 
+# op account add --address my.1password.com --email wendy_appleseed@agilebits.com --shorthand personal
+# Then, you'll be able to sign in using the account shorthand or ID. 
+# For example: op signin --account personal.
 
 # Work
 # Use the UUID to get the private key from the 1Password item and save it to ~/.ssh/id_rsa
