@@ -97,7 +97,7 @@ else
   FILENAME="id_rsa_"$ALIAS
   HOSTEXTENSION="."$ALIAS
 fi
-echo "⏳ Writing ssh keys to ~/.ssh/"$FILENAME
+echo "⏳ Writing SSH keys to ~/.ssh/"$FILENAME
 echo "⏳ Writing 'Host github.com$HOSTEXTENSION' to ~/.ssh/config"
 
 
