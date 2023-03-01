@@ -1,33 +1,47 @@
 # 1password.sh
 # Link to SSH keys used in github, bitbucket, using 1Password CLI
+# Link to SSH keys used in github, bitbucket, using 1Password CLI
 
 echo "Setting up 1Password SSH Keys"
+echo "✅ Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
 echo "✅ Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
 read
 
 echo "❗️ Overwrite SSH config? Press any key to continue, or Ctrl+C to cancel"
+echo "❗️ Overwrite SSH config? Press any key to continue, or Ctrl+C to cancel"
 read
+
 
 rm -rf ~/.ssh/
 mkdir ~/.ssh/
 touch ~/.ssh/config
 
 # TODO: When is it necessary to signout of all accounts?
+<<<<<<< HEAD
 #op signout --all
 #op account forget --all
+=======
+# op signout --all
+# op account forget --all
+>>>>>>> 8e2895d32c5f81b1b67ae59f4c0e3fd42c2b3b70
 
 # Prompt user to choose between 1Password CLI app integration and manual signin
+# TODO: Find a method of directly testing for availablity of 1Password CLI app integration
+options=("Use 1Password CLI desktop app integration" "Sign in manually...")
 # TODO: Find a method of directly testing for availablity of 1Password CLI app integration
 options=("Use 1Password CLI desktop app integration" "Sign in manually...")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Use 1Password CLI desktop app integration")
+        "👍 Using 1Password CLI desktop app integration")
             break
             ;;
 
         "Sign in manually...")
+        "Sign in manually...")
             # Add the accounts and signin manually
+            eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W   --signin)
+            eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV  --signin)
             eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W   --signin)
             eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV  --signin)
             break
@@ -44,7 +58,11 @@ done
 echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
 
 # Test if 1Password is signed in
+<<<<<<< HEAD
 if op whoami ; then
+=======
+if op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com ; then
+>>>>>>> 8e2895d32c5f81b1b67ae59f4c0e3fd42c2b3b70
   echo "✅ Signed in"
 else
   echo "Sign in manually.."
@@ -53,6 +71,7 @@ else
 fi
 
 # Get private and public keys, referencing the 1Password item by UUID, and save to ~/.ssh/
+# Get private and public keys, referencing the 1Password item by UUID, and save to ~/.ssh/
 # Work
 op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=privatekey > ~/.ssh/id_rsa
 op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=publickey  > ~/.ssh/id_rsa.pub
@@ -60,6 +79,7 @@ op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fi
 op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=privatekey > ~/.ssh/id_rsa_ben
 op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=publickey  > ~/.ssh/id_rsa_ben.pub
 
+# Add repos to known hosts
 # Add repos to known hosts
 echo "Adding github.com and bitbucket.org to known_hosts"
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
