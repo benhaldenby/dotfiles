@@ -13,8 +13,8 @@ mkdir ~/.ssh/
 touch ~/.ssh/config
 
 # TODO: When is it necessary to signout of all accounts?
-#op signout --all
-#op account forget --all
+# op signout --all
+# op account forget --all
 
 # Prompt user to choose between 1Password CLI app integration and manual signin
 # TODO: Find a method of directly testing for availablity of 1Password CLI app integration
@@ -28,8 +28,8 @@ do
 
         "Sign in manually")
             # Add the accounts and signin manually
-            eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W --shorthand ben --signin)
-            eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV --shorthand matrix --signin)
+            eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W   --signin)
+            eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV  --signin)
             break
             ;;
         *) echo "invalid option $REPLY";;
@@ -42,13 +42,10 @@ done
 # For example: op signin --account personal.
 
 echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
-
+# Get private and public keys, referencing the 1Password item by UUID, and save to ~/.ssh/
 # Work
-# Get private key, referencing 1Password item by UUID, save to ~/.ssh/id_rsa
 op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=privatekey > ~/.ssh/id_rsa
-# Get public key, referencing 1Password item by UUID, save to ~/.ssh/id_rsa.pub
 op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=publickey  > ~/.ssh/id_rsa.pub
-
 # Personal
 op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=privatekey > ~/.ssh/id_rsa_ben
 op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=publickey  > ~/.ssh/id_rsa_ben.pub
