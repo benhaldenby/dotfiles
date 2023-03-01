@@ -10,5 +10,5 @@ ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads
 rm -rf ~/Downloads.backup
 
 # Open Apps folder
-echo "Opening NewOS/Apps folder"
+echo "Opening NewOS/Apps folder..."
 open ~/Library/Mobile\ Documents/com~apple~CloudDocs/NewOS/Apps/

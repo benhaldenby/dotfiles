@@ -18,8 +18,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "MacBook Pro"
-sudo scutil --set HostName "MacBook Pro"
+sudo scutil --set ComputerName $COMPUTERNAME
+sudo scutil --set HostName $COMPUTERNAME
 # sudo scutil --set LocalHostName "MacBook Pro"
 # sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "MacBook Pro"
 
@@ -384,10 +384,10 @@ defaults write com.apple.dock minimize-to-application -bool true
 defaults write com.apple.dock persistent-apps -array
 
 # Show only open applications in the Dock
-defaults write com.apple.dock static-only -bool true
+defaults write com.apple.dock static-only -bool false
 
-# Don’t animate opening applications from the Dock
-defaults write com.apple.dock launchanim -bool false
+# Animate applications as they open in the Dock
+defaults write com.apple.dock launchanim -bool true
 
 # Speed up Mission Control animations
 # defaults write com.apple.dock expose-animation-duration -float 0.1
