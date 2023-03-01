@@ -23,12 +23,16 @@ echo "Getting SSH keys from 1Password..."
 #eval $(op signin)
 
 # Work
-op item get h65su5gwa4p6xloa2mwkmhxmsm --account PZOFM37IGVFUJJ2GNL5P7W2YJA --fields label=privatekey > ~/.ssh/id_rsa
-op item get h65su5gwa4p6xloa2mwkmhxmsm --account PZOFM37IGVFUJJ2GNL5P7W2YJA --fields label=publickey  > ~/.ssh/id_rsa.pub
+# Use the UUID to get the private key from the 1Password item and save it to ~/.ssh/id_rsa
+op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=privatekey > ~/.ssh/id_rsa
+# Use the UUID to get the public key from the 1Password item and save it to ~/.ssh/id_rsa.pub
+op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=publickey  > ~/.ssh/id_rsa.pub
 
 # Personal
-op item get m4pyakfcvkuxizm6zhr5x53xf4 --account YRP74L5VUNFUHOEPTMT4V7FHOM --fields label=privatekey > ~/.ssh/id_rsa_ben
-op item get m4pyakfcvkuxizm6zhr5x53xf4 --account YRP74L5VUNFUHOEPTMT4V7FHOM --fields label=publickey  > ~/.ssh/id_rsa_ben.pub
+# Use the UUID to get the private key from the 1Password item and save it to ~/.ssh/id_rsa_ben
+op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=privatekey > ~/.ssh/id_rsa_ben
+# Use the UUID to get the public key from the 1Password item and save it to ~/.ssh/id_rsa_ben.pub
+op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=publickey  > ~/.ssh/id_rsa_ben.pub
 
 # Add to known hosts
 echo "Adding github.com and bitbucket.org to known_hosts"
@@ -76,8 +80,4 @@ Host bitbucket.org.ben
 # Fig ssh integration. Keep at the bottom of this file.
 Match all
   Include ~/.fig/ssh
-<<<<<<< HEAD
 EOT
-=======
-EOT
->>>>>>> 77dc8ea2da48cbd2c2fc6d6aebafdacd02601660
