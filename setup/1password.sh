@@ -1,11 +1,8 @@
 #!/bin/bash
-echo "First arg: $1"
-echo "Second arg: $2"
+#echo "First arg: $1"
+#echo "Second arg: $2"
 
-# 1password.sh
-# Link to SSH keys used in github, bitbucket, using 1Password CLI
-# Link to SSH keys used in github, bitbucket, using 1Password CLI
-
+# Use 1Password CLI to get and link SSH keys used in github, bitbucket
 echo "Setting up 1Password SSH Keys"
 echo "🔏 Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
 read
@@ -26,7 +23,12 @@ do
 
         "Sign in manually...")
             # Sign in to 1Password CLI
-            eval $(op account add --signin) 
+            eval $(op account add --signin)
+
+            # Add work and personal accounts and signin manually
+            #eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com --signin)
+            #eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --signin)
+ 
             break
             ;;
         *) echo "invalid option $REPLY";
@@ -42,8 +44,16 @@ echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
 
 # Get private and public keys, referencing the 1Password item by UUID, and save to ~/.ssh/
 # Work
-op read "op://private/matrixssh/privatekey" > ~/.ssh/id_rsa
-op read "op://private/matrixssh/publickey" > ~/.ssh/id_rsa.pub
+
+# Ask for a filename for the new ssh keys
+read -p "~/.ssh/" filename
+read -p "Vault:" vaultname
+read -p "Item:" itemname
+
+mkdir -p ~/.ssh
+op read "op://$vaultname/$itemname/privatekey" > ~/.ssh/$filename
+op read "op://$vaultname/$itemname/publickey" > ~/.ssh/$filename.pub
+
 
 # Add repos to known hosts
 echo "Adding github.com and bitbucket.org to known_hosts"
@@ -51,7 +61,8 @@ ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ssh-keyscan -H bitbucket.org >> ~/.ssh/known_hosts
 
 # Create a symlink to the 1Password SSH agent socket
-ln -s ~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+#mkdir -p ~/.1password
+#ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
 
 # Update SSH config
 echo "Updating SSH config"
@@ -60,7 +71,8 @@ Include /Users/ben/.colima/ssh_config
 
 # All keys
 Host *
-  IdentityAgent "~/.1password/agent.sock"
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  #IdentityAgent "~/.1password/agent.sock"
   AddKeysToAgent yes
   UseKeychain yes
 
@@ -75,6 +87,19 @@ Host bitbucket.org
   HostName bitbucket.org
   User git
   IdentityFile ~/.ssh/id_rsa.pub
+  IdentitiesOnly yes
+
+# Personal GitHub
+Host github.com.ben
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_ben.pub
+  IdentitiesOnly yes
+# Personal Bitbucket
+Host bitbucket.org.ben
+  HostName bitbucket.org
+  User git
+  IdentityFile ~/.ssh/id_rsa_ben.pub
   IdentitiesOnly yes
 
 # Fig ssh integration. Keep at the bottom of this file.
