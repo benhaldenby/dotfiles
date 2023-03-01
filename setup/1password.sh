@@ -1,11 +1,12 @@
 # 1password.sh
 # Get work and personal public SSH keys using 1Password CLI and insert them into ~/.ssh/
 
+echo ""
 echo "🔑 Setting up 1Password SSH keys"
 echo "Enable the SSH agent in 1Password > Preferences > Developer"
+read
 
-echo "⚠️ Overwrite SSH config?"
-echo "Press any key to continue, or Ctrl+C to cancel"
+echo "⛔️ Overwrite SSH config? Press any key to continue, or Ctrl+C to cancel"
 read
 
 echo "🔥 Removing existing SSH config"
@@ -19,17 +20,22 @@ read
 
 # Check if the 1Password CLI app is installed and enabled
 if [ -x "$(command -v op)" ]; then
+  echo "✅ 1Password CLI is installed"
   # Test if the 1Password CLI app is integrated with the account
   if op list items >/dev/null 2>&1; then
     # If the script reaches this point, the 1Password CLI app is installed and integrated
-    echo "1Password CLI app is installed and integrated with the account"
-    read
+    echo "✅ 1Password CLI app integration is installed and enabled"
+    # read
+  else
+    echo "🚫 1Password CLI app is not installed"
+    echo "Signing out of a forgetting 1Password accounts..."
+    op account forget --all
+    echo "Now add the accounts and signin manually..."
+    
+    # Add the accounts and signin manually
+    eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W --shorthand ben --signin)
+    eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV --shorthand matrix --signin)
   fi
-else
-  echo "1Password CLI app is not installed. Add the accounts and signin manually..."
-  # Add the accounts and signin manually
-  eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W --shorthand ben --signin)
-  eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV --shorthand matrix --signin)
 fi
 
 
@@ -37,6 +43,8 @@ fi
 # op account add --address my.1password.com --email wendy_appleseed@agilebits.com --shorthand personal
 # Then, you'll be able to sign in using the account shorthand or ID. 
 # For example: op signin --account personal.
+
+echo "Getting SSH keys from 1Password..."
 
 # Work
 # Use the UUID to get the private key from the 1Password item and save it to ~/.ssh/id_rsa
