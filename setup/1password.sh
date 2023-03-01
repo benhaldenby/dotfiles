@@ -75,8 +75,9 @@ read -p "Add github.com and bitbucket.org to ~/.ssh/known_hosts? (y/N) " respons
 
 # Check the user's response
 if [[ $response =~ ^[Yy]$ ]]; then
-    # Add github.com and bitbucket.org to ~/.ssh/known_hosts
-    ssh-keyscan github.com bitbucket.org >> ~/.ssh/known_hosts
+  # Add github.com and bitbucket.org to ~/.ssh/known_hosts
+  ssh-keyscan github.com bitbucket.org >> ~/.ssh/known_hosts
+  echo "Updating SSH config"
 fi
 
 # Create a symlink to the 1Password SSH agent socket
@@ -84,8 +85,6 @@ fi
 #ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
 
 # Update SSH config
-echo "Updating SSH config"
-
 cat << _EOF >> ~/.ssh/config
 
 Host github.com$HOSTEXTENSION
