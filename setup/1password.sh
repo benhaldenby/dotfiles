@@ -21,30 +21,61 @@ do
 
         "Sign in manually...")
             # Sign in to 1Password CLI
-            eval $(op account add --signin)
+
+            ACCOUNTS=$(op account list)  # run the command and capture its output
+            if [ -z "$ACCOUNTS" ]; then  # check if the output is empty
+              eval $(op signin)
+            else
+              read -p "Add another account? (y/N) " ADDACCOUNT
+              if [[ $ADDACCOUNT =~ ^[Yy]$ ]]; then
+                # Add another account
+                eval $(op account add --signin)
+              else
+                eval $(op signin)
+              fi  
+            fi
+
+            break
+            ;;
+        *) echo "invalid option $REPLY";
+    esac
+
+    echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
+    # Create the .ssh directory if it doesn't exist
+    mkdir -p ~/.ssh
+    sleep 1
+    op whoami
+done
+
+# Ask for a FILENAME for the new ssh keys
+echo "Enter the vault and item name for the SSH keys you want to use"
+
+# Select a vault name
+#echo "Choose a vault:"
+PS3="Choose a vault: "
+options=("private" "personal")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "private")
+            VAULTNAME="private"
+            break
+            ;;
+
+        "personal")
+            VAULTNAME="personal"
             break
             ;;
         *) echo "invalid option $REPLY";
     esac
 done
 
-# After you sign in, save your session token to an environment variable. 
-# op account add --address my.1password.com --email wendy_appleseed@agilebits.com --shorthand personal
-# Then, you'll be able to sign in using the account shorthand or ID. 
-# For example: op signin --account personal.
+# Select an item name
+read -p "Enter an item: [sshkey]" ITEMNAME
+if ITEMNAME=""; then
+  ITEMNAME="sshkey"
+fi
 
-echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
-
-# Get private and public keys, referencing the 1Password item by UUID, and save to ~/.ssh/
-# Work
-
-# Create the .ssh directory if it doesn't exist
-mkdir -p ~/.ssh
-
-# Ask for a FILENAME for the new ssh keys
-echo "Enter the vault and item name for the SSH keys you want to use"
-read -p "vault: " VAULTNAME
-read -p "item: " ITEMNAME
 echo "Enter an alias to use for the filename and config file (leave blank for standard: id_rsa)"
 read ALIAS
 
@@ -59,6 +90,8 @@ fi
 echo "SSH key set ~/.ssh/"$FILENAME
 echo "~/.ssh/config: Host github.com$HOSTEXTENSION"
 
+
+
 # Get the private and public keys from 1Password, and save them to ~/.ssh
 op read "op://$VAULTNAME/$ITEMNAME/privatekey" > ~/.ssh/$FILENAME
 op read "op://$VAULTNAME/$ITEMNAME/publickey" > ~/.ssh/$FILENAME.pub
@@ -67,10 +100,10 @@ chmod 600 ~/.ssh/$FILENAME
 chmod 600 ~/.ssh/$FILENAME.pub
 
 # Prompt the user for confirmation
-read -p "Add github.com and bitbucket.org to ~/.ssh/known_hosts? (y/N) " response
+read -p "Add hosts to ~/.ssh/known_hosts? (y/N) " ADDHOSTS
 
 # Check the user's response
-if [[ $response =~ ^[Yy]$ ]]; then
+if [[ $ADDHOSTS =~ ^[Yy]$ ]]; then
   # Add github.com and bitbucket.org to ~/.ssh/known_hosts
   ssh-keyscan github.com bitbucket.org >> ~/.ssh/known_hosts
   echo "Updating SSH config"
