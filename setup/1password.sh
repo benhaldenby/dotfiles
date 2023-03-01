@@ -30,13 +30,16 @@ do
             ;;
 
         "Sign in manually...")
-            # Add the accounts and signin manually
-            eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com --signin)
-            eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --signin)
-        
+            # Sign in to 1Password CLI
+            eval $(op account add --signin)
+
+            # Add work and personal accounts and signin manually
+            #eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com --signin)
+            #eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --signin)
+ 
             break
             ;;
-        *) echo "invalid option $REPLY";;
+        *) echo "invalid option $REPLY";
     esac
 done
 
@@ -49,11 +52,11 @@ echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
 
 # Get private and public keys, referencing the 1Password item by UUID, and save to ~/.ssh/
 # Work
-op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=privatekey > ~/.ssh/id_rsa
-op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=publickey  > ~/.ssh/id_rsa.pub
+op read "op://private/matrixssh/privatekey" > ~/.ssh/id_rsa
+op read "op://private/matrixssh/publickey" > ~/.ssh/id_rsa.pub
 # Personal
-op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=privatekey > ~/.ssh/id_rsa_ben
-op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=publickey  > ~/.ssh/id_rsa_ben.pub
+#op read "op://personal/personalssh/privatekey" > ~/.ssh/id_rsa_ben
+#op read "op://personal/personalssh/publickey" > ~/.ssh/id_rsa_ben.pub
 
 # Add repos to known hosts
 echo "Adding github.com and bitbucket.org to known_hosts"
