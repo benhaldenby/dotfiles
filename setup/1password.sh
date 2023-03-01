@@ -18,15 +18,15 @@ touch ~/.ssh/config
 
 # Prompt user to choose between 1Password CLI app integration and manual signin
 # TODO: Find a method of directly testing for availablity of 1Password CLI app integration
-options=("Use 1Password CLI desktop app integration" "Sign in manually")
+options=("Use 1Password CLI desktop app integration" "Sign in manually...")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Use 1Password CLI desktop app integration")
+        "👍 Using 1Password CLI desktop app integration")
             break
             ;;
 
-        "Sign in manually")
+        "Sign in manually...")
             # Add the accounts and signin manually
             eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W   --signin)
             eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV  --signin)
@@ -42,6 +42,16 @@ done
 # For example: op signin --account personal.
 
 echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
+
+# Test if 1Password is signed in
+if op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com ; then
+  echo "✅ Signed in"
+else
+  echo "Sign in manually.."
+  eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W   --signin)
+  eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV  --signin)
+fi
+
 # Get private and public keys, referencing the 1Password item by UUID, and save to ~/.ssh/
 # Work
 op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com --fields label=privatekey > ~/.ssh/id_rsa
