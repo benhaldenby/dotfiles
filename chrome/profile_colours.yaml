@@ -1,0 +1,8 @@
+# profile colours
+
+home:
+  colour: '#1DADF8' # Blue
+work:
+  colour: '#63DA38' # Green
+family:
+  colour: '#FFCC02' # Yellow
