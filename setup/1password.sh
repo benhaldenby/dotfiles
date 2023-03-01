@@ -34,6 +34,8 @@ do
       if [ -z "$ACCOUNTS" ]; then  # check if the output is empty
         eval $(op signin)
       else
+        echo "Available accounts:"
+        op account list
         read -p "Add another account? (y/N) " ADDACCOUNT
         if [[ $ADDACCOUNT =~ ^[Yy]$ ]]; then
           # Add another account
@@ -95,9 +97,8 @@ else
   FILENAME="id_rsa_"$ALIAS
   HOSTEXTENSION="."$ALIAS
 fi
-echo "SSH key set ~/.ssh/"$FILENAME
-echo "~/.ssh/config: Host github.com$HOSTEXTENSION"
-
+echo "⏳ Writing ssh keys to ~/.ssh/"$FILENAME
+echo "⏳ Writing 'Host github.com$HOSTEXTENSION' to ~/.ssh/config"
 
 
 # Get the private and public keys from 1Password, and save them to ~/.ssh
