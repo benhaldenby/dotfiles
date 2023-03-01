@@ -18,37 +18,41 @@ echo "🔏 Enable SSH agent and CLI integration in 1Password > Preferences > Dev
 options=("Use 1Password CLI desktop app integration" "Sign in manually...")
 select opt in "${options[@]}"
 do
-    case $opt in
-        "Use 1Password CLI desktop app integration")
-            break
-            ;;
+  case $opt in
+    "Use 1Password CLI desktop app integration")
+      eval $(op signin)  # this will trigger the next account wizard if there are no accounts
+      sleep 1
+      op whoami
+      echo ""
+      break
+      ;;
 
-        "Sign in manually...")
-            # Sign in to 1Password CLI
+    "Sign in manually...")
+      # Sign in to 1Password CLI
 
-            ACCOUNTS=$(op account list)  # run the command and capture its output
-            if [ -z "$ACCOUNTS" ]; then  # check if the output is empty
-              eval $(op signin)
-            else
-              read -p "Add another account? (y/N) " ADDACCOUNT
-              if [[ $ADDACCOUNT =~ ^[Yy]$ ]]; then
-                # Add another account
-                eval $(op account add --signin)
-              else
-                eval $(op signin)
-              fi  
-            fi
+      ACCOUNTS=$(op account list)  # run the command and capture its output
+      if [ -z "$ACCOUNTS" ]; then  # check if the output is empty
+        eval $(op signin)
+      else
+        read -p "Add another account? (y/N) " ADDACCOUNT
+        if [[ $ADDACCOUNT =~ ^[Yy]$ ]]; then
+          # Add another account
+          eval $(op account add --signin)
+        else
+          eval $(op signin)
+        fi  
+      fi
 
-            break
-            ;;
-        *) echo "invalid option $REPLY";
-    esac
+      break
+      ;;
+    *) echo "invalid option $REPLY";
+  esac
 
-    echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
-    # Create the .ssh directory if it doesn't exist
-    mkdir -p ~/.ssh
-    sleep 1
-    op whoami
+  echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
+  # Create the .ssh directory if it doesn't exist
+  mkdir -p ~/.ssh
+  sleep 1
+  op whoami
 done
 
 # Ask for a FILENAME for the new ssh keys
