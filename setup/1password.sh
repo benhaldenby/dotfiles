@@ -27,7 +27,6 @@ do
             ;;
 
         "Sign in manually")
-            echo "Sign in manually..."
             # Add the accounts and signin manually
             eval $(op account add --address my.1password.com --email benhaldenby@gmail.com --secret-key A3-LHLCST-8MZPL3-QESHG-STNG4-Z82AW-9G79W --shorthand ben --signin)
             eval $(op account add --address matrixcreate.1password.com --email ben@matrixcreate.com  --secret-key A3-ZNK6LH-G93L36-FS982-3VH9G-6AMHF-ZSHXV --shorthand matrix --signin)
@@ -42,7 +41,7 @@ done
 # Then, you'll be able to sign in using the account shorthand or ID. 
 # For example: op signin --account personal.
 
-echo "Authorise 1Password CLI to access your 1Password SSH keys..."
+echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
 
 # Work
 # Get private key, referencing 1Password item by UUID, save to ~/.ssh/id_rsa
