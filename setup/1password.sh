@@ -58,11 +58,7 @@ done
 echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
 
 # Test if 1Password is signed in
-<<<<<<< HEAD
 if op whoami ; then
-=======
-if op item get h65su5gwa4p6xloa2mwkmhxmsm --account matrixcreate.1password.com ; then
->>>>>>> 8e2895d32c5f81b1b67ae59f4c0e3fd42c2b3b70
   echo "✅ Signed in"
 else
   echo "Sign in manually.."
