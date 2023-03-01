@@ -2,8 +2,12 @@
 
 # Use 1Password CLI to get and link SSH keys used in github, bitbucket
 echo "Setting up 1Password SSH Keys"
+echo "Logged in:"
+op whoami
+echo ""
 echo "🔏 Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
 #read
+
 
 # TODO: When is it necessary to signout of all accounts?
 #op signout --all
