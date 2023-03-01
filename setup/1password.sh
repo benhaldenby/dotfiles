@@ -3,9 +3,7 @@
 # Link to SSH keys used in github, bitbucket, using 1Password CLI
 
 echo "Setting up 1Password SSH Keys"
-echo "✅ Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
-read
-
+echo "🔏 Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
 echo "❗️ Overwrite SSH config? Press any key to continue, or Ctrl+C to cancel"
 read
 
