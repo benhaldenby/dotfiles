@@ -17,7 +17,6 @@ touch ~/.ssh/config
 #op signout --all
 #op account forget --all
 
-
 # Prompt user to choose between 1Password CLI app integration and manual signin
 # TODO: Find a method of directly testing for availablity of 1Password CLI app integration
 options=("Use 1Password CLI desktop app integration" "Sign in manually...")
