@@ -23,7 +23,7 @@ options=("Use 1Password CLI desktop app integration" "Sign in manually...")
 select opt in "${options[@]}"
 do
     case $opt in
-        "👍 Using 1Password CLI desktop app integration")
+        "Use 1Password CLI desktop app integration")
             break
             ;;
 
