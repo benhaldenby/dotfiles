@@ -1,47 +1,37 @@
 # 1password.sh
 # Get work and personal public SSH keys using 1Password CLI and insert them into ~/.ssh/
 
-echo ""
-echo "🔑 Setting up 1Password SSH keys"
-echo "Enable the SSH agent in 1Password > Preferences > Developer"
-#read
+echo "Setting up 1Password SSH Keys"
+echo "🔓 Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
+read
 
 echo "⛔️ Overwrite SSH config? Press any key to continue, or Ctrl+C to cancel"
-#read
-
-echo "🔥 Removing existing SSH config"
+read
 rm -rf ~/.ssh/
 mkdir ~/.ssh/
 touch ~/.ssh/config
 
-echo "Getting SSH keys from 1Password..."
-echo "Enable 1Password CLI app integration in 1Password > Preferences > Developer"
-#read
+op signout --all
+op account forget --all
 
-
-read -r -p "Sign and remove accounts? [Y/n] " input
- 
-case $input in
-      [yY][eE][sS]|[yY])
-            echo "Sign out of all accounts"
-            op signout --all
-            echo "Forget of all accounts"
-            op account forget --all
-            ;;
-      [nN][oO]|[nN])
-            echo "You say No"
-            ;;
-      *)
-            echo "Invalid input..."
-            exit 1
-            ;;
-esac
+# read -r -p "Sign out and remove all accounts? [Y/n] " input 
+# case $input in
+#       [yY][eE][sS]|[yY])
+#             op signout --all
+#             op account forget --all
+#             ;;
+#       [nN][oO]|[nN])
+#             ;;
+#       *)
+#             echo "Invalid input..."
+#             exit 1
+#             ;;
+# esac
 
 
 
 # TODO: Find a method of directly testing for 1Password CLI app integration
 # Prompt user to choose between 1Password CLI app integration and manual signin
-PS3='Please enter your choice: '
 options=("Use 1Password CLI desktop app integration" "Sign in manually")
 select opt in "${options[@]}"
 do
@@ -68,7 +58,7 @@ done
 # Then, you'll be able to sign in using the account shorthand or ID. 
 # For example: op signin --account personal.
 
-echo "Getting SSH keys from 1Password..."
+echo "Authorise 1Password CLI to access your 1Password SSH keys..."
 
 # Work
 # Use the UUID to get the private key from the 1Password item and save it to ~/.ssh/id_rsa
@@ -83,12 +73,14 @@ op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label
 op item get m4pyakfcvkuxizm6zhr5x53xf4 --account my.1password.com --fields label=publickey  > ~/.ssh/id_rsa_ben.pub
 
 # Add to known hosts
+echo ""
 echo "Adding github.com and bitbucket.org to known_hosts"
+echo ""
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ssh-keyscan -H bitbucket.org >> ~/.ssh/known_hosts
 
 # Update SSH config
-echo "Updating SSH config..."
+echo "Updating SSH config"
 cat <<EOT >> ~/.ssh/config
 Include /Users/ben/.colima/ssh_config
 
@@ -129,3 +121,6 @@ Host bitbucket.org.ben
 Match all
   Include ~/.fig/ssh
 EOT
+
+
+echo "✨ Done!"
