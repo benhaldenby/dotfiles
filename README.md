@@ -2,13 +2,10 @@
 
 🚧 WIP
 
-Hat tip to
-[Mathias Bynens](https://mathiasbynens.be/)
-[Dries Vints](https://driesvints.com/blog/getting-started-with-dotfiles)
-
 ## A Fresh macOS Setup
 
 These instructions are for setting up new Mac devices. Instead, if you want to get started building your own dotfiles, you can [find those instructions below](#your-own-dotfiles).
+Hat tip to [Mathias Bynens](https://mathiasbynens.be/) and [Dries Vints](https://driesvints.com/blog/getting-started-with-dotfiles)
 
 ### Backup your data
 
