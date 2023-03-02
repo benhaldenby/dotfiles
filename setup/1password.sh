@@ -130,8 +130,8 @@ fi
 # Update SSH config
 cat << _EOF >> ~/.ssh/config
 
-Host github.com
-  HostName github.com$HOSTEXTENSION
+Host github.com$HOSTEXTENSION
+  HostName github.com
   User git
   IdentityFile ~/.ssh/$FILENAME.pub
   IdentitiesOnly yes
