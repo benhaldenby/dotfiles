@@ -123,24 +123,23 @@ if [[ $ADDHOSTS =~ ^[Yy]$ ]]; then
   echo "⏳ Updating SSH config"
 fi
 
-# Create a symlink to the 1Password SSH agent socket
-#mkdir -p ~/.1password
-#ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+# Symlink ~/.1password/agent.sock to the 1Password SSH agent socket that is tucked away in ~/Library
+mkdir -p ~/.1password
+ln -sf ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
 
 # Update SSH config
 cat << _EOF >> ~/.ssh/config
-
 Host github.com$HOSTEXTENSION
   HostName github.com
   User git
   IdentityFile ~/.ssh/$FILENAME.pub
   IdentitiesOnly yes
-
 Host bitbucket.org$HOSTEXTENSION
   HostName bitbucket.org
   User git
   IdentityFile ~/.ssh/$FILENAME.pub
   IdentitiesOnly yes
+--------------------
 
 _EOF
 
