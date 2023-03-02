@@ -1,13 +1,14 @@
 # Shortcuts
-alias ls="ls -al"      # List in long format, include dotfiles
-alias ld="ls -ld */"   # List in long format, only directories
+alias ls="ls -al"      # alias ls to show all files, long list
+alias ld="ls -ld */"   # show file list, only directories
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Copy SSH keys to clipboard
-alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
-alias copysshben="pbcopy < $HOME/.ssh/id_rsa_ben.pub"
+alias cpssh="pbcopy < $HOME/.ssh/id_rsa.pub"
+alias cpsshben="pbcopy < $HOME/.ssh/id_rsa_ben.pub"
 
 # Recursively remove .DS_Store files
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
