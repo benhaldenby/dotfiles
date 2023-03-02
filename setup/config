@@ -3,7 +3,7 @@ Include ~/.colima/ssh_config
 
 # All keys
 Host *
-  IdentityFile ~/.1password/agent.sock
+  IdentityAgent ~/.1password/agent.sock
   AddKeysToAgent yes
   UseKeychain yes
 
