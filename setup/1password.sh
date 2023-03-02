@@ -1,11 +1,17 @@
 #!/bin/bash
 
 # Use 1Password CLI to get and link SSH keys used in github, bitbucket
-echo "Setting up 1Password SSH Keys"
 echo ""
-echo "🔏 Enable SSH agent and CLI integration in 1Password > Preferences > Developer"
+echo "🔐 Setting up 1Password SSH Keys"
+echo ""
+echo "Enable SSH Agent and 1Password CLI in 1Password > Preferences > Developer"
+echo "If you don't have 1Password CLI enabled, you'll need to sign in manually"
 read
 
+# Create the .ssh directory if it doesn't exist
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+touch ~/.ssh/config
+chmod 600 ~/.ssh/config
 
 # TODO: When is it necessary to signout of all accounts?
 #op signout --all
@@ -49,8 +55,6 @@ do
   esac
 
   echo "🔓 Authorising 1Password CLI to access your 1Password SSH keys..."
-  # Create the .ssh directory if it doesn't exist
-  mkdir -p ~/.ssh
   sleep 1
   op whoami
 done
@@ -95,8 +99,8 @@ else
   FILENAME="id_rsa_"$ALIAS
   HOSTEXTENSION="."$ALIAS
 fi
-echo "⏳ Writing SSH keys to ~/.ssh/"$FILENAME
-echo "⏳ Writing 'Host github.com$HOSTEXTENSION' to ~/.ssh/config"
+#echo "⏳ Writing SSH keys to ~/.ssh/"$FILENAME
+#echo "⏳ Writing 'Host github.com$HOSTEXTENSION' to ~/.ssh/config"
 
 # Get the private and public keys from 1Password, and save them to ~/.ssh
 op read "op://$VAULTNAME/$ITEMNAME/privatekey" > ~/.ssh/$FILENAME
@@ -127,7 +131,7 @@ fi
 # Update SSH config
 cat << _EOF >> ~/.ssh/config
 
-Host github.com$HOSTEXTENSION
+Host github.com
   HostName github.com
   User git
   IdentityFile ~/.ssh/$FILENAME.pub
