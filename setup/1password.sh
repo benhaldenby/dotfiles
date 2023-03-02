@@ -34,7 +34,7 @@ do
       else
         echo "Available accounts:"
         op account list
-        read -p "Add another account? (y/N) " ADDACCOUNT
+        read -p "Add another account? [y/N]" ADDACCOUNT
         if [[ $ADDACCOUNT =~ ^[Yy]$ ]]; then
           # Add another account
           eval $(op account add --signin)
@@ -105,8 +105,13 @@ op read "op://$VAULTNAME/$ITEMNAME/publickey" > ~/.ssh/$FILENAME.pub
 chmod 600 ~/.ssh/$FILENAME
 chmod 600 ~/.ssh/$FILENAME.pub
 
+echo op read "op://personal/sshkey/privatekey"
+echo op read "op://$VAULTNAME/sshkey/privatekey"
+
+cat ~/.ssh/$FILENAME.pub
+
 # Prompt the user for confirmation
-read -p "Add hosts to ~/.ssh/known_hosts? (y/N) " ADDHOSTS
+read -p "Add hosts to ~/.ssh/known_hosts? [y/N]" ADDHOSTS
 
 # Check the user's response
 if [[ $ADDHOSTS =~ ^[Yy]$ ]]; then
