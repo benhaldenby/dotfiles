@@ -109,10 +109,9 @@ op read "op://$VAULTNAME/$ITEMNAME/publickey" > ~/.ssh/$FILENAME.pub
 chmod 600 ~/.ssh/$FILENAME
 chmod 600 ~/.ssh/$FILENAME.pub
 
-echo op read "op://personal/sshkey/privatekey"
-echo op read "op://$VAULTNAME/sshkey/privatekey"
-
-cat ~/.ssh/$FILENAME.pub
+#echo op read "op://personal/sshkey/privatekey"
+#echo op read "op://$VAULTNAME/sshkey/privatekey"
+#cat ~/.ssh/$FILENAME.pub
 
 # Prompt the user for confirmation
 read -p "Add hosts to ~/.ssh/known_hosts? [y/N]" ADDHOSTS
@@ -132,7 +131,7 @@ fi
 cat << _EOF >> ~/.ssh/config
 
 Host github.com
-  HostName github.com
+  HostName github.com$HOSTEXTENSION
   User git
   IdentityFile ~/.ssh/$FILENAME.pub
   IdentitiesOnly yes
