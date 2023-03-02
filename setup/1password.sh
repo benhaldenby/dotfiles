@@ -98,7 +98,6 @@ fi
 echo "⏳ Writing SSH keys to ~/.ssh/"$FILENAME
 echo "⏳ Writing 'Host github.com$HOSTEXTENSION' to ~/.ssh/config"
 
-
 # Get the private and public keys from 1Password, and save them to ~/.ssh
 op read "op://$VAULTNAME/$ITEMNAME/privatekey" > ~/.ssh/$FILENAME
 op read "op://$VAULTNAME/$ITEMNAME/publickey" > ~/.ssh/$FILENAME.pub
