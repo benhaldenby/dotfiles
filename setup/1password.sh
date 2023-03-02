@@ -112,7 +112,7 @@ read -p "Add hosts to ~/.ssh/known_hosts? (y/N) " ADDHOSTS
 if [[ $ADDHOSTS =~ ^[Yy]$ ]]; then
   # Add github.com and bitbucket.org to ~/.ssh/known_hosts
   ssh-keyscan github.com bitbucket.org >> ~/.ssh/known_hosts
-  echo "Updating SSH config"
+  echo "⏳ Updating SSH config"
 fi
 
 # Create a symlink to the 1Password SSH agent socket
