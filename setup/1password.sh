@@ -124,8 +124,8 @@ if [[ $ADDHOSTS =~ ^[Yy]$ ]]; then
 fi
 
 # Create a symlink to the 1Password SSH agent socket
-#mkdir -p ~/.1password
-#ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+mkdir -p ~/.1password
+ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
 
 # Update SSH config
 cat << _EOF >> ~/.ssh/config
