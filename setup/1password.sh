@@ -20,11 +20,7 @@ select option in "${options[@]}"
 do
   case $option in
     "Use 1Password CLI desktop app integration")
-      # Check if 1Password CLI is already signed in
-      # Sign in to 1Password CLI
-
-      # Sign in to 1Password CLI
-      # This will trigger the next account wizard if there are no accounts
+      # Sign in to 1Password CLI (will trigger new account wizard if there are no accounts)
       eval $(op signin)
       # Dramatic pause
       sleep 1 
