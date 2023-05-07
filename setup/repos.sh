@@ -2,9 +2,8 @@
 echo "Cloning repositories..."
 
 LOCAL=$HOME/Local
-PROJECTS=$HOME/Local/Projects
-BEN=$PROJECTS/Ben
-MATRIX=$PROJECTS/Matrix
+BEN=$LOCAL/Ben
+MATRIX=$LOCAL/Matrix
 
 # Personal
 git clone git@github.com.ben:benhaldenby/dotfiles.git $BEN
