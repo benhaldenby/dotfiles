@@ -1,25 +1,21 @@
 # Taps
-# tap 'homebrew/cask'
+tap 'homebrew/cask'
 # tap 'homebrew/cask-fonts'
 # tap 'homebrew/cask-versions'
-# tap 'homebrew/bundle'
+tap 'homebrew/bundle'
 # tap 'nicoverbruggen/homebrew-cask'
 # tap 'stripe/stripe-cli'
 
 # Binaries
-# brew 'awscli'
+brew 'awscli'
 brew 'coreutils' # Those that come with macOS are outdated
 brew 'mackup'
 brew 'mas' # Mac App Store manager
 
 # Rogue Amoeba
 # brew install --cask audiohijack
-# STCK-Y4GC-QEFA-EV9C-9NKY-WUP4-GPXR-YPE4-H4MR
 # brew install --cask farrago
-# FEBE-QKAW-EMVU-4668-QXKD-G2VY-MBCY-RMJC-24XF
 # brew install --cask soundsource
-# ZLAT-RKN3-ZA2M-BFWD-8FZJ-DE23-W9XJ-2U8N-DHDA
-
 
 # Spatie Medialibrary
 # brew 'jpegoptim'
@@ -54,30 +50,29 @@ cask 'fig'
 cask 'google-chrome'
 
 cask 'launchbar'
-# 16UG7BTXY1-717L1-M1EMDMTDZJ
 cask 'little-snitch'
-# Ben Haldenby
-# 35UG7BTXY2-715NS-Z6W2EYARJ8
-
 cask 'nordvpn'
-# cask 'firefox'
-# cask 'imageoptim'
+cask 'firefox'
+cask 'imageoptim'
 # cask 'loopback'
 # cask 'plex-media-server'
-cask 'slack'
+# cask 'slack'
 # cask 'spotify'
 # cask 'launchbar'
-# cask 'soundsource'
+cask 'raycast'
+cask 'soundsource'
 # cask 'the-unarchiver'
 # cask 'transmission'
 cask 'visual-studio-code'
 
 # Quicklook
-# cask 'qlmarkdown'
-# cask 'quicklook-json'
-# cask 'qlstephen'
-# cask 'qlvideo'
-# cask 'webpquicklook'
+# https://github.com/haokaiyang/Mac-QuickLook
+cask 'qlcolorcode'
+cask 'qlmarkdown'
+cask 'quicklook-json'
+cask 'qlstephen'
+cask 'qlvideo'
+cask 'webpquicklook'
 
 # Fonts
 # cask 'font-lato'
