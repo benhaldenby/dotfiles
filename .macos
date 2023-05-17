@@ -371,7 +371,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
 # Set the icon size of Dock items to 36 pixels
-# defaults write com.apple.dock tilesize -int 36
+defaults write com.apple.dock tilesize -int 36
 
 # Position the Dock on the left, right or bottom
 defaults write com.apple.dock "orientation" -string "left" && killall Dock
