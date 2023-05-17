@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-
 # Thanks to Mathias Bynens!
 # ~/.macos — https://mths.be/macos
+
+# User values
+COMPUTERNAME="MacBook Pro"
+
+echo "Setting up your Mac..."
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change

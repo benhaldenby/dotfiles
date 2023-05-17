@@ -1,8 +1,3 @@
-echo "Setting up your Mac..."
-
-# User values
-COMPUTERNAME="MacBook Pro"
-
 # Setup path
 # sh setup/path.sh
 
