@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "Cloning repositories..."
 
-LOCAL=$HOME/Local
+LOCAL=$HOME
 BEN=$LOCAL/Ben
 MATRIX=$LOCAL/Matrix
 

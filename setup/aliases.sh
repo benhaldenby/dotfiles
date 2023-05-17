@@ -7,8 +7,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Copy SSH keys to clipboard
-alias cpssh="pbcopy < $HOME/.ssh/id_rsa.pub"
-alias cpsshben="pbcopy < $HOME/.ssh/id_rsa_ben.pub"
+#alias cpssh="pbcopy < $HOME/.ssh/id_rsa.pub"
+#alias cpsshben="pbcopy < $HOME/.ssh/id_rsa_ben.pub"
 
 # Recursively remove .DS_Store files
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"

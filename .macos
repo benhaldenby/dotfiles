@@ -389,8 +389,8 @@ defaults write com.apple.dock persistent-apps -array
 # Show only open applications in the Dock
 defaults write com.apple.dock static-only -bool false
 
-# Animate applications as they open in the Dock
-defaults write com.apple.dock launchanim -bool true
+# Don't animate applications as they open in the Dock
+defaults write com.apple.dock launchanim -bool false
 
 # Speed up Mission Control animations
 # defaults write com.apple.dock expose-animation-duration -float 0.1
