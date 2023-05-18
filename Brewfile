@@ -42,6 +42,11 @@ brew 'node'
 brew 'yarn'
 
 # Apps
+
+cask 'intune-company-portal'
+cask 'microsoft-outlook'
+cask 'microsoft-teams'
+
 cask '1password'
 cask '1password-cli'
 cask 'appcleaner'
