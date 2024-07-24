@@ -18,7 +18,7 @@ sh setup/brew.sh
 #ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Aliases
-#sh setup/aliases.sh
+# sh setup/aliases.sh
 
 # Local directory setup
 sh setup/folders.sh
@@ -31,16 +31,16 @@ sh setup/repos.sh
 
 
 # Tower
-#sh setup/tower.sh
+# sh setup/tower.sh
 
 # Set default MySQL root password and auth type
 #mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"
 
 # Install nvm
-sh setup/nvm.sh
+# sh setup/nvm.sh
 
 # Install docker, colima, ddev (error prone 260223)
-sh setup/docker.sh
+# sh setup/docker.sh
 
 # Symlink the Mackup config file to the home directory
 #ln -s .mackup.cfg $HOME/.mackup.cfg

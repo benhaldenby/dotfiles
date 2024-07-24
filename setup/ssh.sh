@@ -44,7 +44,6 @@ ssh-keyscan -H bitbucket.org >> ~/.ssh/known_hosts
 # Insert SSH config for multiple keys
 echo "Writing SSH config"
 cat << EOF >> ~/.ssh/config
-Include /Users/ben/.colima/ssh_config
 
 # All keys
 Host *
@@ -77,9 +76,17 @@ Host bitbucket.org.ben
   IdentityFile ~/.ssh/id_rsa_ben
   IdentitiesOnly yes
 
-# Fig ssh integration. Keep at the bottom of this file.
-Match all
-  Include ~/.fig/ssh
+Host github.com.sr
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_shroomrise
+  IdentitiesOnly yes
+
+Host github.com.af
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_affulfilment
+  IdentitiesOnly yes
 EOF
 
 echo "Done!"

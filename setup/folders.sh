@@ -1,7 +1,7 @@
 # Set up local Projects directories
 
 echo "Creating local repo folders"
-mkdir -p $HOME/Matrix $HOME/Ben
+mkdir -p $HOME/Local/Matrix $HOME/Local/Ben
 
 # Symlink ~/Downloads to iCloud
 echo "Symlinking ~/Downloads to iCloud"
