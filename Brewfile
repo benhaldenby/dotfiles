@@ -7,9 +7,9 @@ tap 'homebrew/bundle'
 # tap 'stripe/stripe-cli'
 
 # Binaries
-brew 'awscli'
-brew 'coreutils' # Those that come with macOS are outdated
-brew 'mackup'
+# brew 'awscli'
+# brew 'coreutils' # Those that come with macOS are outdated
+# brew 'mackup'
 brew 'mas' # Mac App Store manager
 
 # Rogue Amoeba
@@ -25,6 +25,8 @@ brew 'svgo'
 # brew 'gifsicle'
 
 # Development
+brew 'herd'
+brew 'dbngin'
 # brew 'php'
 # brew 'php@8.0'
 # brew 'php@7.4'
@@ -37,47 +39,47 @@ brew 'svgo'
 # brew 'mysql'
 # brew 'mysql@5.7'
 # brew 'nginx'
-brew 'node'
+# brew 'node'
 # brew 'redis'
-brew 'yarn'
+# brew 'yarn'
+
+# Microsoft
+# cask 'intune-company-portal'
+# cask 'microsoft-outlook'
+# cask 'microsoft-teams'
 
 # Apps
-
-cask 'intune-company-portal'
-cask 'microsoft-outlook'
-cask 'microsoft-teams'
-
 cask '1password'
-cask '1password-cli'
+# cask '1password-cli'
 cask 'appcleaner'
-cask 'fig'
+# cask 'fig'
 # cask 'discord'
-cask 'google-chrome'
+# cask 'google-chrome'
 
-cask 'launchbar'
-cask 'little-snitch'
+# cask 'launchbar'
+# cask 'little-snitch'
 cask 'nordvpn'
 cask 'firefox'
 cask 'imageoptim'
 # cask 'loopback'
-# cask 'plex-media-server'
+cask 'plex-media-server'
 # cask 'slack'
 # cask 'spotify'
 # cask 'launchbar'
 cask 'raycast'
-cask 'soundsource'
-# cask 'the-unarchiver'
-# cask 'transmission'
+# cask 'soundsource'
+cask 'the-unarchiver'
+cask 'transmission'
 cask 'visual-studio-code'
 
 # Quicklook
 # https://github.com/haokaiyang/Mac-QuickLook
-cask 'qlcolorcode'
-cask 'qlmarkdown'
-cask 'quicklook-json'
-cask 'qlstephen'
-cask 'qlvideo'
-cask 'webpquicklook'
+# cask 'qlcolorcode'
+# cask 'qlmarkdown'
+# cask 'quicklook-json'
+# cask 'qlstephen'
+# cask 'qlvideo'
+# cask 'webpquicklook'
 
 # Fonts
 # cask 'font-lato'
