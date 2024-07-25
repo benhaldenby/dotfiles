@@ -3,7 +3,8 @@
 # ~/.macos — https://mths.be/macos
 
 # User values
-COMPUTERNAME="MacBook Pro"
+read -p "Please enter the computer name: " COMPUTERNAME
+echo "The computer name is set to: $COMPUTERNAME"
 
 echo "Setting up your Mac..."
 
@@ -24,8 +25,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Set computer name (as done via System Preferences → Sharing)
 sudo scutil --set ComputerName $COMPUTERNAME
 sudo scutil --set HostName $COMPUTERNAME
-# sudo scutil --set LocalHostName "MacBook Pro"
-# sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "MacBook Pro"
+sudo scutil --set LocalHostName $COMPUTERNAME
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTERNAME
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
