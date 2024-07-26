@@ -1,4 +1,4 @@
-s# Setup path
+# Setup path
 #sh setup/path.sh
 
 # Check for Homebrew and install if we don't have it
@@ -11,7 +11,7 @@ fi
 
 # Update Homebrew recipes
 echo "Updating Homebrew..."
-# sh setup/brew.sh
+sh setup/brew.sh
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 #rm -rf $HOME/.zshrc
