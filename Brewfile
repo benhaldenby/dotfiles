@@ -18,8 +18,18 @@ cask 'raycast'
 cask 'visual-studio-code'
 
 cask 'radarr'
+# code sign
+codesign --force --deep -s - /Applications/Radarr.app && xattr -rd com.apple.quarantine 
+/Applications/Radarr.app
+
 cask 'sonarr'
+codesign --force --deep -s - /Applications/Sonarr.app && xattr -rd com.apple.quarantine 
+/Applications/Sonarr.app
+
 cask 'prowlarr'
+codesign --force --deep -s - /Applications/Prowlarr.app && xattr -rd com.apple.quarantine 
+/Applications/Prowlarr.app
+
 cask 'sabnzbd'
 
 brew 'carbon-copy-cloner'
