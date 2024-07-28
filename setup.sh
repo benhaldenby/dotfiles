@@ -21,7 +21,7 @@ sh setup/brew.sh
 # sh setup/aliases.sh
 
 # Local directory setup
-# sh setup/folders.sh
+sh setup/folders.sh
 
 # SSH setup
 # sh setup/ssh.sh

@@ -1,7 +1,11 @@
 # Set up local Projects directories
 
 echo "Creating local repo folders"
-mkdir -p $HOME/Local/Matrix $HOME/Local/Ben
+# mkdir -p $HOME/Local/Matrix $HOME/Local/Ben
+
+# Symlink ~/Documents to iCloud
+echo "Symlinking ~/Documents to iCloud"
+sudo mv -f ~/Documents ~/Documents.backup && ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents ~/Documents
 
 # Symlink ~/Downloads to iCloud
 echo "Symlinking ~/Downloads to iCloud"
